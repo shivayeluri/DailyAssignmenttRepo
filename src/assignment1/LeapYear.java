@@ -1,45 +1,30 @@
+package assignment1;
+
 import java.util.Scanner;
 
 public class LeapYear {
-    public void isLeapYear(){
+    public void isLeapYear(String[] args){
 
-        int year = 0;
-        boolean flag = false;
-
-        Scanner sc = new Scanner(System.in);
-        System.out.println("please enter year : ");
+        StringBuilder sb1 = new StringBuilder();
+        StringBuilder sb2 = new StringBuilder();
         try {
-            year = sc.nextInt();
-            if(year > 0) {
-                if (String.valueOf(year).length() == 4 ) {
-//                    if(((year % 4 ==0 && year % 100 !=0) || (year %400 == 0))) {
-//                        flag = true;
-//                    }
-                    if (year % 4 == 0) {
-                        if (year % 100 == 0) {
-                            if (year % 400 == 0) {
-                                flag = true;
-                            }else{flag = false;}
-                        }else{flag = true;}
-                    }else{flag = false;}
+            if(Integer.parseInt(args[0]) > 0) {
+                if (String.valueOf(Integer.parseInt(args[0])).length() == 4 ) {
+                    if(((Integer.parseInt(args[0]) % 4 ==0 && Integer.parseInt(args[0]) % 100 !=0) || (Integer.parseInt(args[0]) %400 == 0))) {
+                        sb1.append(Integer.parseInt(args[0])).append(" is leap year");
+                        System.out.println(sb1);
+                    }else{
+                        sb2.append(Integer.parseInt(args[0])).append(" is not a leap year");
+                        System.out.println(sb2);
+                    }
                 } else {
                     System.out.println("please enter four digit year ");
-                    flag = false;
                 }
             }else{
                 System.out.println("please enter positive year");
-                flag = false;
             }
         }catch (Exception e){
-            System.out.println("please enter integer input");
-            flag = false;
-        }
-
-        if(flag){
-            System.out.println(year +" is leap year.");
-        }
-        else{
-            System.out.println(year +" is not leap year.");
+            System.out.println("please enter year.");
         }
     }
 }
