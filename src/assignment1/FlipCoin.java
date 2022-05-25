@@ -2,20 +2,17 @@ package assignment1;
 import java.util.Scanner;
 
 public class FlipCoin {
-    public void flipCoinPercentage(){
+    public void flipCoinPercentage(String args){
         int heads = 0;
         int tails = 0;
-        int flips = 0;
+        int flips = Integer.parseInt(args);
         int counter = 0;
         double randomNumber = 0.0;
-        boolean flag = true;
 
-        Scanner sc = new Scanner(System.in);
+        StringBuilder sb1 = new StringBuilder();
+        StringBuilder sb2 = new StringBuilder();
 
         try {
-            System.out.println("Enter How many times you want flip");
-            flips = sc.nextInt();
-
             if (flips > 0) {
                 while (counter < flips) {
                     randomNumber = Math.random();
@@ -25,19 +22,18 @@ public class FlipCoin {
                         tails = tails + 1;
                     counter++;
                 }
+                sb1.append("Probability of Heads percentage is : ").append((heads*100)/flips).append("%");
+                sb2.append("Probability of Tails percentage is : ").append(( 100 - (heads*100)/flips)).append("%");
+
+                System.out.println(sb1);
+                System.out.println(sb2);
             } else {
                 System.out.println("Please enter positive input");
-                flag = false;
             }
         }catch (Exception e){
             System.out.println("please enter integer only");
-            flag = false;
         }
 
-        if (flag){
-            System.out.println("Probability of Heads percentage is : "+(heads*100)/flips + "%");
-            System.out.println("Probability of Tails percentage is : "+ ( 100 - (heads*100)/flips)+ "%");
-        }
     }
 }
 
