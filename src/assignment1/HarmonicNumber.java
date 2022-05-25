@@ -1,32 +1,26 @@
 package assignment1;
 
-import java.util.Scanner;
-
 public class HarmonicNumber {
-    public void nthHarmonicValue(){
-        int inputNumber;
+    public void nthHarmonicValue(String[] args){
         float harmonic = 1f;
-        boolean flag = true;
+        StringBuilder sb = new StringBuilder();
 
-        Scanner sc = new Scanner(System.in);
         try {
-            System.out.println("Enter harmonic series number : ");
-            inputNumber = sc.nextInt();
-            if (inputNumber > 0) {
-                for(int indexnumber=2; indexnumber <= inputNumber; indexnumber++){
-                    harmonic = harmonic + (1f/indexnumber);
+            if (Integer.parseInt(args[0]) > 0) {
+                for(int indexNumber=2; indexNumber <= Integer.parseInt(args[0]); indexNumber++){
+                    harmonic = harmonic + (1f/indexNumber);
                 }
+
+                sb.append("Harmonic value : ").append(harmonic);
+                System.out.println(sb);
+
             } else {
                 System.out.println("Enter positive integer only");
-                flag = false;
             }
+        }catch (ArrayIndexOutOfBoundsException e){
+            System.out.println("Array Index Out of bound");
         }catch (Exception e){
             System.out.println("enter Integer only");
-            flag= false;
-        }
-
-        if(flag){
-            System.out.println(harmonic);
         }
     }
 }
