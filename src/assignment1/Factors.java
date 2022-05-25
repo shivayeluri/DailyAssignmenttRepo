@@ -4,42 +4,31 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Factors {
-    public void primeFactors(){
-        int inputNumber = 0;
-        boolean flag = true;
+    public void primeFactors(String args){
 
         ArrayList<String> arraylist = new ArrayList<>();
-
-        Scanner sc = new Scanner(System.in);
+        StringBuilder sb = new StringBuilder();
 
         try {
-            System.out.println("enter number ");
-            inputNumber = sc.nextInt();
-
-            if (inputNumber > 2) {
-                for (int indexNumber = 2; indexNumber <= (inputNumber - 1); indexNumber++) {
-                    if (inputNumber % indexNumber == 0) {
-                        if (isPrimeNumber(indexNumber)) {
-//                        System.out.println(indexNumber);
-                            arraylist.add(String.valueOf(indexNumber));
-                        }
+            if (Integer.parseInt(args) > 2) {
+                for (int indexNumber = 2; indexNumber <= (Integer.parseInt(args) - 1); indexNumber++) {
+                    if (Integer.parseInt(args) % indexNumber == 0 && isPrimeNumber(indexNumber) ) {
+                        arraylist.add(String.valueOf(indexNumber));
                     }
                 }
+
+                if(arraylist.size() == 0){
+                    sb.append(args).append(" have no Prime factors.");
+                    System.out.println(sb);
+                }else{
+                    System.out.println(arraylist);
+                }
+
             } else {
                 System.out.println("please enter a number above two.");
-                flag = false;
             }
         }catch (Exception e){
             System.out.println("Please enter integer only");
-            flag = false;
-        }
-
-        if (flag){
-            if(arraylist.size() == 0){
-                System.out.println(inputNumber+" have no prime factors." );
-            }else {
-                System.out.println(arraylist);
-            }
         }
     }
 
